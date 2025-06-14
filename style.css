@@ -1,136 +1,195 @@
+/* Importation de la police futuriste */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  scroll-behavior: smooth;
-  font-family: 'Segoe UI', sans-serif;
 }
 
 body {
-  background-color: #0e0e0e;
+  font-family: 'Orbitron', sans-serif;
+  background-color: #0a0a0a;
   color: #fff;
+  scroll-behavior: smooth;
 }
 
+/* Hero */
 .hero {
   position: relative;
   height: 100vh;
-  background: url('images/festival.jpg') no-repeat center center/cover;
+  background: url('images/photo1.jpg') no-repeat center center/cover;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
+  overflow: hidden;
 }
 
-.overlay {
+.hero .overlay {
   position: absolute;
-  width: 100%;
+  top: 0;
+  left: 0;
   height: 100%;
-  background: rgba(0, 0, 0, 0.7);
+  width: 100%;
+  background: rgba(0,0,0,0.7);
+  z-index: 1;
 }
 
-.content {
+.hero .content {
   position: relative;
-  z-index: 1;
-  animation: fadeIn 2s ease-in-out;
+  z-index: 2;
+  animation: fadeIn 2s ease-out;
 }
 
 .title {
-  font-size: 4em;
-  color: #fff;
-  animation: popIn 1.2s ease-out;
+  font-size: 3.5rem;
+  color: #00ffee;
+  text-shadow: 0 0 20px #00ffee;
 }
 
 .subtitle {
-  font-size: 1.3em;
-  margin: 15px 0;
+  font-size: 1.5rem;
+  margin: 20px 0;
+  color: #ccc;
 }
 
 .btn {
-  padding: 12px 25px;
-  background: #ff0077;
-  color: white;
-  text-decoration: none;
+  background-color: #00ffee;
+  color: #000;
+  padding: 12px 24px;
+  border: none;
   font-weight: bold;
-  border-radius: 25px;
+  text-transform: uppercase;
+  border-radius: 8px;
+  text-decoration: none;
   transition: 0.3s ease;
+  box-shadow: 0 0 10px #00ffee;
 }
 
 .btn:hover {
-  background: #e60067;
-  transform: scale(1.05);
+  background-color: #000;
+  color: #00ffee;
+  box-shadow: 0 0 20px #00ffee;
 }
 
+/* Sections */
 section {
   padding: 80px 20px;
+  max-width: 1200px;
+  margin: auto;
   text-align: center;
 }
 
+.gallery .images {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.gallery img {
+  width: 300px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 12px;
+  transition: transform 0.5s ease;
+  box-shadow: 0 0 20px #00ffee55;
+}
+
+.gallery img:hover {
+  transform: scale(1.05);
+}
+
+/* About */
 .about p {
-  max-width: 800px;
+  max-width: 700px;
   margin: auto;
-  font-size: 1.1em;
+  font-size: 1.2rem;
   line-height: 1.6;
 }
 
-.projects .cards {
+/* Programmation */
+.lineup {
+  list-style: none;
+  font-size: 1.2rem;
+  padding: 0;
+}
+
+.lineup li {
+  margin: 12px 0;
+  animation: slideUp 0.6s ease forwards;
+}
+
+/* Cartes */
+.cards {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 30px;
-  margin-top: 40px;
 }
 
 .card {
-  background: #1a1a1a;
+  background: #111;
+  border-radius: 12px;
   padding: 20px;
-  border-radius: 15px;
-  width: 300px;
-  transition: transform 0.3s ease, background 0.3s ease;
-  box-shadow: 0 0 10px rgba(255, 0, 120, 0.3);
+  width: 280px;
+  transition: transform 0.4s ease;
+  box-shadow: 0 0 10px #00ffee33;
 }
 
 .card:hover {
-  background: #2a2a2a;
-  transform: scale(1.05);
+  transform: translateY(-10px);
+  box-shadow: 0 0 30px #00ffeeaa;
 }
 
 .card img {
   width: 100%;
-  border-radius: 10px;
+  border-radius: 8px;
+  margin-bottom: 12px;
 }
 
-.card h3 {
-  margin: 15px 0 10px;
+/* Appel à l'action */
+.cta {
+  background: linear-gradient(135deg, #00ffee10, #00ffee22);
+  padding: 60px 20px;
 }
 
+.btn-large {
+  font-size: 1.3rem;
+  padding: 16px 32px;
+  margin-top: 20px;
+  display: inline-block;
+  border-radius: 12px;
+  background: #00ffee;
+  color: #000;
+  text-decoration: none;
+  box-shadow: 0 0 15px #00ffee;
+  transition: 0.3s ease;
+}
+
+.btn-large:hover {
+  background: #000;
+  color: #00ffee;
+  box-shadow: 0 0 25px #00ffee;
+}
+
+/* Footer */
 footer {
+  background: #000;
   text-align: center;
   padding: 20px;
-  background: #111;
-  font-size: 0.9em;
+  font-size: 0.9rem;
+  color: #aaa;
 }
 
+/* Animations */
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(30px); }
+  from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes popIn {
-  0% { transform: scale(0.7); opacity: 0; }
-  100% { transform: scale(1); opacity: 1; }
-}
-
-@media screen and (max-width: 768px) {
-  .projects .cards {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .title {
-    font-size: 2.5em;
-  }
-
-  .btn {
-    font-size: 1em;
-  }
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
 }
