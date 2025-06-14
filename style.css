@@ -313,3 +313,10 @@ footer {
   font-size: 0.95rem;
   color: #ccc;
 }
+
+.hero .content img {
+  max-width: 250px; /* ou 300px si tu veux plus grand */
+  height: auto;
+  margin-bottom: 20px;
+  filter: drop-shadow(0 0 10px #00ffee88);
+}
