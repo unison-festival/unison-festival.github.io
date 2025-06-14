@@ -1,11 +1,26 @@
-// Animation au scroll
-window.addEventListener('scroll', () => {
-  document.querySelectorAll('section').forEach(section => {
-    const top = section.getBoundingClientRect().top;
-    const trigger = window.innerHeight * 0.8;
-    if (top < trigger) {
-      section.style.opacity = '1';
-      section.style.transform = 'translateY(0)';
+// Animation au défilement (apparition douce)
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.animation = 'fadeIn 1s forwards';
     }
+  });
+});
+
+document.querySelectorAll('section, .card, .lineup li').forEach(el => {
+  el.style.opacity = 0;
+  observer.observe(el);
+});
+
+// Effet de survol dynamique sur images
+const images = document.querySelectorAll('.gallery img');
+images.forEach(img => {
+  img.addEventListener('mousemove', (e) => {
+    const x = e.offsetX;
+    const y = e.offsetY;
+    img.style.transform = `scale(1.05) rotateX(${(y - 100) / 20}deg) rotateY(${(x - 150) / 20}deg)`;
+  });
+  img.addEventListener('mouseleave', () => {
+    img.style.transform = 'scale(1)';
   });
 });
